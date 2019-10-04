@@ -51,12 +51,13 @@ dayname = zeller(day,month,year)
 print('Today is', dayname)
 
 import requests, shutil, json
-url = 'https://some-random-api.ml/meme'
-data = {"image":"","caption":""}
+url = 'https://meme-api.herokuapp.com/gimme'
+data = {"postLink":"","url":""}
 response = requests.get(url, data=data)
 print(response.text)
 j = json.loads(response.text)
-image_url = j['image']
+image_url = j['url']
+reddit = j['postLink']
 resp = requests.get(image_url, stream=True)
 local_file = open('/home/pi/twitter/local_image.jpg', 'wb')
 resp.raw.decode_content = True
@@ -67,5 +68,5 @@ del resp
 #random_link =random.choice(links)
 #print('A Random YouTube video of mine: https://www.youtube.com/watch?v={0}'.format(random_link))
 print('Tweeting...')
-api.update_with_media("/home/pi/twitter/local_image.jpg", status = 'Today is a {0}\nHere\'s A Random Meme'.format(dayname))
+api.update_with_media("/home/pi/twitter/local_image.jpg", status = 'Today is a {0}\nHere\'s A Random Meme from {1}'.format(dayname, reddit))
 print('done')
