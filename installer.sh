@@ -5,6 +5,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 echo "Make sure all files are located in /home/pi/todaymemebot/ (including this installer)"
 echo "Put your own API Key, API Secret, Access Token, and Access Token Secret inside driver.py"
+echo "Adding tweepy to Python"
+pip3 install tweepy
 echo "Creating dummy jpg file so the script works (Don't delete!)"
 touch local_image.jpg
 echo "Modifying crontab to run at noon"
