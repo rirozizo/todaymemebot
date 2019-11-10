@@ -59,14 +59,14 @@ j = json.loads(response.text)
 image_url = j['url']
 reddit = j['postLink']
 resp = requests.get(image_url, stream=True)
-local_file = open('/home/pi/twitter/local_image.jpg', 'wb')
+local_file = open('/home/pi/todaymemebot/local_image.jpg', 'wb')
 resp.raw.decode_content = True
 shutil.copyfileobj(resp.raw, local_file)
 del resp
 
-#links = open('/home/pi/twitter/links.txt').read().splitlines()
+#links = open('/home/pi/todaymemebot/links.txt').read().splitlines()
 #random_link =random.choice(links)
 #print('A Random YouTube video of mine: https://www.youtube.com/watch?v={0}'.format(random_link))
 print('Tweeting...')
-api.update_with_media("/home/pi/twitter/local_image.jpg", status = 'Today is a {0}\nHere\'s A Random Meme from {1}'.format(dayname, reddit))
+api.update_with_media("/home/pi/todaymemebot/local_image.jpg", status = 'Today is a {0}\nHere\'s A Random Meme from {1}'.format(dayname, reddit))
 print('done')
