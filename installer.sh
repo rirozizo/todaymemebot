@@ -10,5 +10,5 @@ pip3 install tweepy
 echo "Creating dummy jpg file so the script works (Don't delete!)"
 touch local_image.jpg
 echo "Modifying crontab to run at noon"
-echo "0 12 * * * /usr/bin/python3 /home/pi/todaymemebot/driver.py > /home/pi/todaymemebot/log" > /var/spool/cron/crontabs/root
+echo "0 12 * * * /usr/bin/python3 /home/pi/todaymemebot/driver.py >> /home/pi/todaymemebot/log" > /var/spool/cron/crontabs/root
 echo "Done! use \"sudo crontab -e\" to edit when you want the script to tweet."
