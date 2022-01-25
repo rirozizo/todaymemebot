@@ -68,5 +68,7 @@ del resp
 #random_link =random.choice(links)
 #print('A Random YouTube video of mine: https://www.youtube.com/watch?v={0}'.format(random_link))
 print('Tweeting...')
-api.update_with_media("/home/pi/todaymemebot/local_image.jpg", status = 'Today is a {0}\nHere\'s A Random Meme from {1}'.format(dayname, reddit))
+#api.update_with_media("/home/pi/todaymemebot/local_image.jpg", status = 'Today is a {0}\nHere\'s A Random Meme from {1}'.format(dayname, reddit))
+media = api.media_upload("/home/pi/todaymemebot/local_image.jpg")
+api.update_status('Today is a {0}\nHere\'s A Random Meme from {1}'.format(dayname, reddit), media_ids=[media.media_id])
 print('done')
